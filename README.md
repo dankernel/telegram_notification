@@ -2,34 +2,37 @@
 
 # getting started
 
-## 0. Make a simple setup.
+## 0. Install the utility.
 
-Install the Python dependency package
+Simply install.
 ```
-$ python3 -m pip install -r requirements.txt
-
-# or
-$ pip3 install -r requirements.txt
+$ pip install telegram-notification
 ```
 
-Register in ~/.bashrc
-```
-$ echo "alias noti='python3 $(pwd)/telegram_main.py'" >> ~/.bashrc
+## 1. Create your Telegram Bot.
+![res01](res/01.gif)
 
-# or 
-$ echo "alias noti='python $(pwd)/telegram_main.py'" >> ~/.bashrc
-# or 
-$ echo "alias noti='/usr/bin/python $(pwd)/telegram_main.py'" >> ~/.bashrc
-# or 
-$ echo "alias noti='/your/envs/path/python $(pwd)/telegram_main.py'" >> ~/.bashrc
-```
 
-## 1. Create your Telesram Bot.
+- Search for `BotFather` on Telegram
+- Enter `/start`
+- Enter `/newbot`
+- Enter `{your bot name}`
+- Enter `{your bot id}`
 
-## 2. Set your bot's token. 
+## 2. Set your bot's token & user_id. 
 
-## 3. Set your user_id. 
+![res02](res/02.gif)
+
+
+- Enter `telegram_notification` in the terminal.
+- Enter the created bot token.
+- Send `/start` to your bot.
+- When confirmed, exit the program. (CTRL+c)
 
 ## 4. Use it anytime.
 
+![res03](res/03.gif)
+
+
+- Run it as a single command or use a pipe or use it in a shell script.
 
