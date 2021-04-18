@@ -29,10 +29,11 @@ $ pip install telegram-notification
 - Send `/start` to your bot.
 - When confirmed, exit the program. (CTRL+c)
 
-## 4. Use it anytime.
+## 3. Use it anytime.
 
 ![res03](https://raw.githubusercontent.com/dankernel/telegram_notification/main/res/03.gif)
 
 
 - Run it as a single command or use a pipe or use it in a shell script.
 
+Please use it by referring to the [Example](https://github.com/dankernel/telegram_notification/blob/dev/docs/sample.md)
