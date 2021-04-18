@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="telegram_notification", # Replace with your own username
-    version="0.1.1",
+    version="0.1.4",
     author="dankernel",
     author_email="dkdkernel@gmail.com",
     description="A small example package",
@@ -14,7 +14,7 @@ setuptools.setup(
     url="https://github.com/dankernel/telegram_notification",
     packages=setuptools.find_packages(),
     install_requires = ['python-telegram-bot'],
-    scripts=['telegram_notification/telegram_notification', 'telegram_notification/config.ini'],
+    scripts=['telegram_notification/noti', 'telegram_notification/config.ini'],
     package_data = {'': ['telegram_notification/config.ini']},
     include_package_data=True,
     classifiers=[

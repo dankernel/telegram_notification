@@ -1,5 +1,4 @@
 
-
 # getting started
 
 ## 0. Install the utility.
@@ -10,6 +9,7 @@ $ pip install telegram-notification
 ```
 
 ## 1. Create your Telegram Bot.
+
 ![res01](https://raw.githubusercontent.com/dankernel/telegram_notification/main/res/01.gif)
 
 

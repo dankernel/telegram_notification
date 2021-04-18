@@ -78,8 +78,12 @@ class Telegram:
         bot = telegram.Bot(token=self.TOKEN)
 
         if os.path.isfile(msg):
+            if __debug__:
+                print('send image')
             bot.send_photo(chat_id=self.CHAT_ID, photo=open(msg, 'rb'))
         else:
+            if __debug__:
+                print('send text')
             msg = '[{}] {}'.format(self.HOST_NAME, msg)
             bot.send_message(chat_id=self.CHAT_ID, text=msg)
 
@@ -89,7 +93,7 @@ class Telegram:
 
         # Set new chat_id to ini file
         self.config.set('USER', 'chat_id', str(update.effective_user.id))
-        print('Your chat_id is {update.effective_user.id}')
+        print('Your chat_id is {}'.format(update.effective_user.id))
         with open(self.config_file, 'w') as configfile:
             self.config.write(configfile)
 

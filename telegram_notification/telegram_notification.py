@@ -88,7 +88,7 @@ class Telegram:
 
         # Set new chat_id to ini file
         self.config.set('USER', 'chat_id', str(update.effective_user.id))
-        print('Your chat_id is {update.effective_user.id}')
+        print('Your chat_id is {}'.format(update.effective_user.id))
         with open(self.config_file, 'w') as configfile:
             self.config.write(configfile)
 
