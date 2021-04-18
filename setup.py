@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="telegram_notification", # Replace with your own username
-    version="0.1.4",
+    version="0.1.9",
     author="dankernel",
     author_email="dkdkernel@gmail.com",
-    description="A small example package",
+    description="Powerful utility to send telegram alarms from cli",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/dankernel/telegram_notification",
