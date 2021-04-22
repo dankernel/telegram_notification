@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 
 import sys
@@ -6,7 +7,7 @@ from telegram_notification import Telegram
 
 def main():
 
-    telegram = Telegram()
+    telegram = Telegram("1602300000:AAHnXcDVGI0oYVfeWuHPsm1TGxxxxxxxxxx", "17880xxxxx")
 
     if len(sys.argv) == 1:
         telegram.pipe_mode()

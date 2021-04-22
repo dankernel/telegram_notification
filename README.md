@@ -6,7 +6,7 @@
 
 Simply install.
 ```
-$ pip install telegram-notification
+$ sudp python3 -m pip install telegram-notification
 ```
 
 ## 1. Create your Telegram Bot.
@@ -24,7 +24,7 @@ $ pip install telegram-notification
 ![res02](https://raw.githubusercontent.com/dankernel/telegram_notification/main/res/02.gif)
 
 
-- Enter `telegram_notification` in the terminal.
+- Enter `sudo noti` in the terminal.
 - Enter the created bot token.
 - Send `/start` to your bot.
 - When confirmed, exit the program. (CTRL+c)
