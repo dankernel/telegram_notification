@@ -1,4 +1,5 @@
 
+![telegram_notification](https://img.shields.io/badge/telegram_notification-0.2.0-brightgreen)
 
 # getting started
 
