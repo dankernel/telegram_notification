@@ -14,20 +14,24 @@ from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandle
 
 class Telegram:
 
-    def __init__(self):
-        config = None
-        TOKEN = None
-        CHAT_ID =  None
-        HOST_NAME = None
+    def __init__(self, TOKEN=None, CHAT_ID=None):
+        self.config = None
+        self.TOKEN = TOKEN
+        self.CHAT_ID =  CHAT_ID
+        self.HOST_NAME = socket.gethostname()
 
         self.updater = None
 
-        # Read config
+        # When there are parameters, Do nothing
+        if TOKEN != None or CHAT_ID != None:
+            return
+
         self.config = configparser.ConfigParser()
         self.config_file = os.path.join(pathlib.Path(__file__).parent.absolute(), 'config.ini')
         self.config.read(self.config_file)
 
-        print(self.config_file)
+        if __debug__:
+            print('config file path :', self.config_file)
 
         if not self.config.has_option('SERVER', 'token') or not self.config.has_option('USER', 'chat_id'):
             print("\033[41mTOKEN is NONE\033[00m")
@@ -35,6 +39,7 @@ class Telegram:
 
         self.update_ini()
 
+        # Empty ini file
         if len(self.TOKEN) <= 0 or len(self.CHAT_ID) <= 0:
             print("\033[41mTOKEN is NONE\033[00m")
             self.ini_init()
@@ -48,22 +53,33 @@ class Telegram:
     def update_ini(self):
         self.TOKEN = self.config.get('SERVER', 'token')
         self.CHAT_ID = self.config.get('USER', 'chat_id')
-        self.HOST_NAME = socket.gethostname()
 
     def ini_init(self) -> None:
+        """
+        When the app is run for the first time, Set global variables(TOKEN, CHAT_ID) 
+        """
 
-        # Bot Token
+        if os.access(self.config_file, os.R_OK) is False:
+            print("\033[41mFailed to read the global configuration file\033[00m")
+            exit()
+            return
+        if os.access(self.config_file, os.W_OK) is False:
+            print("\033[41mFailed to write global configuration file. Run it with sudo\033[00m")
+            exit()
+            return
+
+        # Get Bot Token
         print('\033[32mEnter your telegram bot token : \033[0m', end='')
         input_token = input()
         self.config.set('SERVER', 'token', str(input_token))
 
-        # Set new Token
+        # Set new Bot Token
         with open(self.config_file, 'w') as configfile:
             self.config.write(configfile)
         self.config.read(self.config_file)
         self.TOKEN = self.config.get('SERVER', 'token')
 
-        # User id
+        # Set User id
         print('\033[32mEnter /start in the telegram \033[0m')
         print('\033[32m(waiting..) \033[0m')
 
@@ -83,12 +99,17 @@ class Telegram:
             bot.send_message(chat_id=self.CHAT_ID, text=msg)
 
     def start(self, update: Update, context: CallbackContext) -> None:
+        """
+        /start Handler
+        """
+
+        # Reply
         msg = f'Checked your id {update.effective_user.id}'
         update.message.reply_text(msg)
 
         # Set new chat_id to ini file
         self.config.set('USER', 'chat_id', str(update.effective_user.id))
-        print('Your chat_id is {update.effective_user.id}')
+        print('Your chat_id is {}'.format(update.effective_user.id))
         with open(self.config_file, 'w') as configfile:
             self.config.write(configfile)
 
